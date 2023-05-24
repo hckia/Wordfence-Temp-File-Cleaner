@@ -34,7 +34,7 @@ function wf_tmp_file_cleanup_task() {
         error_log('Deleted temporary files: ' . implode(', ', $deleted_files));
     }
 }
-add_action('wf_tmp_file_cleanup_event', 'wf_tmp_file_cleanup_task');
+add_action('wf_tmp_file_cleanup_event', 'wf_tmp_file_cleanup_task', 10);
 
 // Schedule the cleanup task upon plugin activation
 function wf_tmp_file_cleanup_activate() {
@@ -45,3 +45,6 @@ function wf_tmp_file_cleanup_activate() {
     error_log('Wordfence Temporary File Cleaner cron event scheduled upon plugin activation.');
 }
 register_activation_hook(__FILE__, 'wf_tmp_file_cleanup_activate');
+
+
+
